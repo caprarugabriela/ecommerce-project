@@ -10,12 +10,16 @@
   --gray: theme(colors.neutral.100);
 }
 
+body {
+  @apply text-neutral-400;
+}
+
 .layout-grid {
   display: grid;
   min-height: 100dvh;
   grid-template-areas:
-    "header"
-    "main-area";
+    'header'
+    'main-area';
   grid-template-rows: var(--mobileHeaderHeight) 1fr;
 }
 
@@ -39,7 +43,7 @@
 
 @media (min-width: 1024px) {
   .layout-grid {
-    grid-template-areas: "header main-area";
+    grid-template-areas: 'header main-area';
     grid-template-columns: var(--desktopHeaderSize) 1fr;
     grid-template-rows: 1fr;
   }
