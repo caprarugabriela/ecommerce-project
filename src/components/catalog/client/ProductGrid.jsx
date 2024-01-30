@@ -1,6 +1,7 @@
 import { useProducts } from '@/hooks';
 import { ProductTile } from './ProductTile';
 import { css } from '@emotion/css';
+import { ThreeDots } from 'react-loader-spinner';
 
 export const ProductGrid = () => {
   const { products, loading } = useProducts();
@@ -16,7 +17,20 @@ export const ProductGrid = () => {
   `;
 
   if (loading) {
-    return <div className="container mx-auto px-4">...loading</div>;
+    return (
+      <div className="container mx-auto px-4 flex items-center justify-center h-screen">
+        <ThreeDots
+          visible={true}
+          height="80"
+          width="80"
+          color="#22d3ee"
+          radius="9"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </div>
+    );
   }
 
   return (

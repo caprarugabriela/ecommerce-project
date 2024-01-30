@@ -1,3 +1,4 @@
+import { StarRating } from '../../ui/server/StarRating';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -30,7 +31,10 @@ export const ProductTile = (props) => {
 
       <section>{/* product price */}</section>
 
-      <footer>{/* add to cart homework */}</footer>
+      <footer>
+        {/* add to cart homework */}
+        <StarRating></StarRating>
+      </footer>
     </article>
   );
 };
