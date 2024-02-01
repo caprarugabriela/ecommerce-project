@@ -1,10 +1,16 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { CgMenu } from 'react-icons/cg';
 import { CgClose } from 'react-icons/cg';
 
 export const OffCanvasMenu = () => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <>
