@@ -2,12 +2,13 @@ import { useProducts } from '@/hooks';
 import { ProductTile } from './ProductTile';
 import { css } from '@emotion/css';
 import { ThreeDots } from 'react-loader-spinner';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { uiContext } from '@/contexts';
 
 export const ProductGrid = () => {
+  const { itemsPerRow } = useContext(uiContext);
   const { products, loading, error } = useProducts();
   const [paginatedProducts, setPaginatedProducts] = useState([]);
-  const itemsPerRow = 2;
   const [perPage, setPerPage] = useState(8);
   const [page, setPage] = useState(1);
 

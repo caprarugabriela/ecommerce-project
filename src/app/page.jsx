@@ -1,9 +1,13 @@
-import { ProductGrid } from '@/components/catalog/client';
+import { CartControls } from '@/components/cart/client';
+import { GridControls, ProductGrid } from '@/components/catalog/client';
 
 export default function Home() {
   return (
     <div className="container px-4 mx-auto">
-      <header></header>
+      <header className="flex justify-end">
+        <GridControls></GridControls>
+        <CartControls></CartControls>
+      </header>
 
       <section>
         <ProductGrid></ProductGrid>
