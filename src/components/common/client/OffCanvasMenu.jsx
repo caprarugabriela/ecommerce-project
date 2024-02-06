@@ -30,7 +30,7 @@ export const OffCanvasMenu = () => {
           open ? 'translate-y-full' : ''
         } bg-neutral-900 transition-transform transform-gpu text-white w-dvw h-dvh fixed left-0 -top-full z-0 lg:w-1/3 center center`}
       >
-        <ul className="flex lg:flex-col lg:justify-center lg:items-center gap-y-5 h-screen text-2xl uppercase">
+        <ul className="flex flex-col justify-center items-center gap-y-5 h-screen text-2xl uppercase">
           <li className=" hover:text-cyan-400">
             <Link href="/" title="Home">
               Home
