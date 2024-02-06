@@ -1,19 +1,40 @@
 import { TiStar } from 'react-icons/ti';
 
-export const StarRating = () => {
-  const stars = Array(4).fill();
+export const StarRating = ({ rate, count }) => {
+  const totalRating = 5;
+  const userRateCounting = Math.floor(rate);
+  const pluralize = (count, { one, many }) => {
+    return `${count} ${count > 1 ? many : one}`;
+  };
 
   return (
-    <ul className="flex gap-1 justify-center">
-      {stars.map((index) => {
-        return (
-          <>
-            <li key={index}>
-              <TiStar color="#fcd34d" size={20}></TiStar>
-            </li>
-          </>
-        );
-      })}
-    </ul>
+    <section className="flex items-center justify-center lg:justify-start text-zinc-900">
+      {Array(totalRating)
+        .fill('_')
+        .map((_, index) => {
+          index += 1;
+          return (
+            <button
+              type="button"
+              key={index}
+              className={
+                index <= userRateCounting
+                  ? 'transition-colos text-black'
+                  : 'transition-colors text-zinc-400'
+              }
+            >
+              <TiStar size="30"></TiStar>
+            </button>
+          );
+        })}
+
+      <span className="ml-4">
+        {pluralize(userRateCounting, {
+          one: 'Star',
+          many: 'Stars',
+        })}
+      </span>
+      <span className="ml-4">({count} Reviews)</span>
+    </section>
   );
 };

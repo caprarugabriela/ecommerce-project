@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Data } from './Data.jsx';
+import { Data } from '../data/index.js';
 
 export const FooterPrimary = () => {
   const { socialMedia, addresses } = Data;

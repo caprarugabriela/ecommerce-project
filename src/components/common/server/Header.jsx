@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import { OffCanvasMenu } from '../client';
 import { FaHome } from 'react-icons/fa';
-import { CgFacebook } from 'react-icons/cg';
-import { FaTiktok } from 'react-icons/fa';
-import { TiSocialGooglePlus } from 'react-icons/ti';
+import { socialLinks } from '@/components/common/server/data/social.js';
 
 // consider jsx is a normal data type
 const jsxLogo = (
@@ -23,38 +21,18 @@ export const Header = () => {
       <OffCanvasMenu></OffCanvasMenu>
 
       <ul className="hidden lg:flex flex-col justify-between items-center gap-6 z-10">
-        <li className=" hover:text-cyan-400">
-          <Link
-            href="https://www.facebook.com/"
-            title="Facebook"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <CgFacebook size="20"></CgFacebook>
-          </Link>
-        </li>
-
-        <li className="hover:text-cyan-400">
-          <Link
-            href="https://www.tiktok.com/"
-            title="TikTok"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaTiktok size="20"></FaTiktok>
-          </Link>
-        </li>
-
-        <li className="hover:text-cyan-400">
-          <Link
-            href="https://www.google.com/"
-            title="Google"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <TiSocialGooglePlus size="20"></TiSocialGooglePlus>
-          </Link>
-        </li>
+        {socialLinks.map((social, index) => (
+          <li key={index} className="hover:text-cyan-400">
+            <a
+              href={social.href}
+              title={social.name}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {social.icon}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

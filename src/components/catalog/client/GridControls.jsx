@@ -1,14 +1,15 @@
 import { uiContext } from '@/contexts';
 import { useContext } from 'react';
+import { BsFillCircleFill } from 'react-icons/bs';
 
 const buttonClasses =
-  'flex justify-center items-center border-l border-zinc-200 w-20 h-20 transition-colors hover:bg-neutral-900 hover:text-white';
+  'flex justify-center items-center border-l border-zinc-200 w-20 h-20 transition-colors hover:bg-neutral-900 hover:text-white gap-2 flex-col';
 
 export const GridControls = () => {
   const { itemsPerRow, setItemsPerRow } = useContext(uiContext);
 
   return (
-    <ul className="border  border-zinc-200 flex">
+    <ul className="border border-zinc-200 flex">
       <li>
         <button
           type="button"
@@ -20,7 +21,7 @@ export const GridControls = () => {
             setItemsPerRow('1');
           }}
         >
-          1
+          <BsFillCircleFill />
         </button>
       </li>
 
@@ -35,7 +36,8 @@ export const GridControls = () => {
             setItemsPerRow('2');
           }}
         >
-          2
+          <BsFillCircleFill />
+          <BsFillCircleFill />
         </button>
       </li>
 
@@ -50,7 +52,12 @@ export const GridControls = () => {
             setItemsPerRow('4');
           }}
         >
-          4
+          <div className=" grid grid-cols-2 gap-2">
+            <BsFillCircleFill />
+            <BsFillCircleFill />
+            <BsFillCircleFill />
+            <BsFillCircleFill />
+          </div>
         </button>
       </li>
     </ul>

@@ -4,6 +4,8 @@ import { css } from '@emotion/css';
 import { ThreeDots } from 'react-loader-spinner';
 import { useContext, useEffect, useState } from 'react';
 import { uiContext } from '@/contexts';
+import Image from 'next/image';
+import pacMan from '../../../../public/images/pac-man.png';
 
 export const ProductGrid = () => {
   const { itemsPerRow } = useContext(uiContext);
@@ -47,7 +49,24 @@ export const ProductGrid = () => {
   }
 
   if (error.trim().length > 0) {
-    return <div className="container mx-auto px-4">{error}</div>;
+    return (
+      <div className="container mx-auto px-4 my-6">
+        <h1 className="text-cyan-400 font-light text-4xl lg:text-6xl mb-10">
+          Accept our appologies!
+        </h1>
+        <p className="lg:text-3xl font-light">
+          The page you were looking for does not exist. You might have misstyped
+          the address or the page may have moved.
+        </p>
+        <Image
+          className="mx-auto"
+          src={pacMan}
+          width={900}
+          height={900}
+          alt="Blue Pac-Man ghost sad"
+        ></Image>
+      </div>
+    );
   }
 
   const pageCount = Math.ceil(products.length / perPage);
@@ -66,7 +85,7 @@ export const ProductGrid = () => {
         })}
       </ul>
 
-      <ul className="flex gap-2">
+      <ul className="flex gap-2 items-center justify-center border border-none mb-20 mt-4 cursor-pointer">
         {Array(pageCount)
           .fill(' ')
           .map((_, index) => {
@@ -77,8 +96,8 @@ export const ProductGrid = () => {
                 <button
                   type="button"
                   title={`Page ${pageIndex}`}
-                  className={`border border-zinc-200 p-2 hover:bg-black hover:text-white transition-colors ${
-                    pageIndex === page ? 'bg-black text-white' : ''
+                  className={` p-2 hover:bg-black hover:text-white transition-colors rounded ${
+                    pageIndex === page ? 'bg-black text-white font-bold' : ''
                   }`}
                   onClick={() => {
                     setPage(pageIndex);
