@@ -12,7 +12,7 @@ export const ProductTile = (props) => {
   const productUrl = `/products/${id}`;
 
   return (
-    <article className="text-center mt-10">
+    <article className="text-center mt-20">
       <header>
         <Link href={productUrl} title={title}>
           <Image
