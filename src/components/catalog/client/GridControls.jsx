@@ -9,7 +9,7 @@ export const GridControls = () => {
   const { itemsPerRow, setItemsPerRow } = useContext(uiContext);
 
   return (
-    <ul className="border border-zinc-200 flex">
+    <ul className="border border-zinc-200 hidden lg:flex">
       <li>
         <button
           type="button"

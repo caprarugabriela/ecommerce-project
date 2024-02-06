@@ -63,9 +63,11 @@ export default async function ProductPage({ params }) {
           </div>
 
           {/* WIP - to be added functionality to the button */}
-          <button className="bg-black text-white uppercase font-medium text-sm my-1 py-3 px-6 hover:bg-cyan-400 transition-colors rounded mt-16 flex items-center justify-center lg:justify-start">
-            Add to cart
-          </button>
+          <div className="lg:justify-start flex justify-center items-center my-16">
+            <button className="bg-black text-white uppercase font-medium text-sm py-3 px-6 hover:bg-cyan-400 transition-colors rounded lg:justify-start">
+              Add to cart
+            </button>
+          </div>
         </section>
       </div>
     </div>
