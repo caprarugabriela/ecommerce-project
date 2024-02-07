@@ -1,7 +1,11 @@
+import { cartContext } from '@/contexts';
 import Link from 'next/link';
 import { ImCart } from 'react-icons/im';
+import { useContext } from 'react';
 
 export const CartControls = () => {
+  const obj = useContext(cartContext);
+
   return (
     <ul className="border border-zinc-200 transition-colors hover:bg-neutral-900 hover:text-white">
       <li>

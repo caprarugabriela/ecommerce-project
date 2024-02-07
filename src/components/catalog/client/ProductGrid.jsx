@@ -8,11 +8,10 @@ import Image from 'next/image';
 import pacMan from '../../../../public/images/pac-man.png';
 
 export const ProductGrid = () => {
-  const { itemsPerRow } = useContext(uiContext);
+  const { itemsPerRow, pagination } = useContext(uiContext);
+  const { perPage, page } = pagination;
   const { products, loading, error } = useProducts();
   const [paginatedProducts, setPaginatedProducts] = useState([]);
-  const [perPage, setPerPage] = useState(8);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const newPaginatedProducts = products
@@ -69,46 +68,17 @@ export const ProductGrid = () => {
     );
   }
 
-  const pageCount = Math.ceil(products.length / perPage);
-
   return (
-    <>
-      <ul className={gridCssClass}>
-        {paginatedProducts.map((product) => {
-          const { id } = product;
+    <ul className={gridCssClass}>
+      {paginatedProducts.map((product) => {
+        const { id } = product;
 
-          return (
-            <li key={id}>
-              <ProductTile product={product}></ProductTile>
-            </li>
-          );
-        })}
-      </ul>
-
-      <ul className="flex gap-2 items-center justify-center border border-none mb-20 mt-4 cursor-pointer">
-        {Array(pageCount)
-          .fill(' ')
-          .map((_, index) => {
-            const pageIndex = index + 1;
-
-            return (
-              <li key={index}>
-                <button
-                  type="button"
-                  title={`Page ${pageIndex}`}
-                  className={` p-2 hover:bg-black hover:text-white transition-colors rounded ${
-                    pageIndex === page ? 'bg-black text-white font-bold' : ''
-                  }`}
-                  onClick={() => {
-                    setPage(pageIndex);
-                  }}
-                >
-                  {pageIndex}
-                </button>
-              </li>
-            );
-          })}
-      </ul>
-    </>
+        return (
+          <li key={id}>
+            <ProductTile product={product}></ProductTile>
+          </li>
+        );
+      })}
+    </ul>
   );
 };

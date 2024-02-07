@@ -1,7 +1,7 @@
 import { Work_Sans } from 'next/font/google';
 import './globals.css';
 import { Footer, Header } from '@/components/common/server';
-import { UiContext } from '@/contexts';
+import { CartContext, UiContext } from '@/contexts';
 
 const workSans = Work_Sans({ subsets: ['latin'] });
 
@@ -15,19 +15,21 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={workSans.className}>
         <UiContext>
-          <div className="layout-grid">
-            <header className="header">
-              <Header></Header>
-            </header>
+          <CartContext>
+            <div className="layout-grid">
+              <header className="header">
+                <Header></Header>
+              </header>
 
-            <div className="main-area">
-              <main className="content">{children}</main>
+              <div className="main-area">
+                <main className="content">{children}</main>
 
-              <footer className="footer">
-                <Footer></Footer>
-              </footer>
+                <footer className="footer">
+                  <Footer></Footer>
+                </footer>
+              </div>
             </div>
-          </div>
+          </CartContext>
         </UiContext>
       </body>
     </html>
