@@ -32,7 +32,7 @@ export const useProducts = () => {
       setProducts(cache);
       setLoading(false);
     }
-  }, []);
+  }, [loading]);
 
   return { products, loading, error };
 };

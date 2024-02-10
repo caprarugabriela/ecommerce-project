@@ -12,9 +12,16 @@ export const useCart = (cartId = 2) => {
         return response.json();
       })
       .then((cart) => {
-        console.log(cart);
+        const { products } = cart;
+        setLoading(false);
+        setCartProducts(products);
+      })
+      .catch(() => {
+        console.dir(error);
+        setLoading(false);
+        setError('An error has occured!');
       });
   }, [cartId]);
 
-  return { cartProducts, loading, error };
+  return { cartProducts, loading, error, setCartProducts };
 };
