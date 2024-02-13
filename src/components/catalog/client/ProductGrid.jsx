@@ -1,11 +1,11 @@
 import { useProducts } from '@/hooks';
 import { ProductTile } from './ProductTile';
 import { css } from '@emotion/css';
-import { ThreeDots } from 'react-loader-spinner';
 import { useContext, useEffect, useState } from 'react';
 import { uiContext } from '@/contexts';
 import Image from 'next/image';
 import pacMan from '../../../../public/images/pac-man.png';
+import { Spinner } from '@/components/ui/client';
 
 export const ProductGrid = () => {
   const { itemsPerRow, pagination } = useContext(uiContext);
@@ -33,16 +33,7 @@ export const ProductGrid = () => {
   if (loading) {
     return (
       <div className="container mx-auto px-4 flex items-center justify-center h-screen">
-        <ThreeDots
-          visible={true}
-          height="80"
-          width="80"
-          color="#22d3ee"
-          radius="9"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
+        <Spinner></Spinner>
       </div>
     );
   }

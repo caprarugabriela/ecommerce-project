@@ -5,3 +5,4 @@ export * from './CartDisplay';
 export * from './CartTotals';
 export * from './CartLineItem';
 export * from './AddToCart';
+export * from './ContinueShopping';

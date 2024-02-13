@@ -1,4 +1,5 @@
-import { CartControls } from '@/components/cart/client';
+import { CartControls, ContinueShopping } from '@/components/cart/client';
+import { ProductPrice } from '@/components/catalog/client';
 import { StarRating } from '@/components/ui/server';
 import { baseUrl } from '@/index';
 import Image from 'next/image';
@@ -21,18 +22,11 @@ export default async function ProductPage({ params }) {
   const { title, image: imageUrl, price, id, rating, description } = product;
   const { rate, count } = rating;
   const productUrl = `/products/${id}`;
-  const priceCurrency = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(price);
 
   return (
     <div className="container px-4 mx-auto">
       <header className="flex justify-between">
-        {/* to be added functionality to back to home */}
-        <button className="border border-zinc-200 transition-colors hover:bg-neutral-900 hover:text-white p-7 uppercase text-cyan-400">
-          Back to home
-        </button>
+        <ContinueShopping></ContinueShopping>
         <CartControls></CartControls>
       </header>
 
@@ -59,7 +53,7 @@ export default async function ProductPage({ params }) {
           <div className="mt-12 text-zinc-900 text-justify">{description}</div>
 
           <div className="text-3xl text-zinc-900 font-bold mt-12 flex items-center justify-center lg:justify-start">
-            {priceCurrency}
+            <ProductPrice price={price}></ProductPrice>
           </div>
 
           {/* WIP - to be added functionality to the button */}
