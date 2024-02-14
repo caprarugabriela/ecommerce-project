@@ -1,30 +1,44 @@
 import { cartContext } from '@/contexts';
+import { useCartActions } from '@/hooks/cart';
 import { useContext } from 'react';
 
 export const AddToCart = ({ product }) => {
   const { title, id } = product;
-  const { setCartProducts, cartProducts } = useContext(cartContext);
-  const loading = false;
+  const { addToCart, adding, removeFromCart, removing } = useCartActions();
+  const { cartProducts } = useContext(cartContext);
+  let cartQuantity = 0;
+
+  const cartProduct = cartProducts.find(({ productId }) => {
+    return id === productId;
+  });
+
+  if (cartProduct) {
+    cartQuantity = cartProduct.quantity;
+  }
+
+  const isProductInCart = !!cartProduct;
 
   const onClick = () => {
-    setCartProducts([
-      ...cartProducts,
-      {
-        quantity: 1,
-        productId: id,
-      },
-    ]);
+    isProductInCart ? removeFromCart(id, cartQuantity) : addToCart(id);
   };
+
+  const busy = adding || removing;
 
   return (
     <button
       type="button"
-      className="bg-black text-white uppercase font-medium text-sm py-3 px-6 hover:bg-amber-800 transition-colors"
-      disabled={loading}
-      title={`Add ${title} to cart`}
+      className="bg-black text-white uppercase font-medium text-sm py-3 px-6 hover:bg-cyan-400 transition-colors"
+      disabled={busy}
+      title={
+        isProductInCart ? `Remove ${title} from cart` : `Add ${title} to cart`
+      }
       onClick={onClick}
     >
-      {loading ? '...loading' : 'Add to Cart'}
+      {busy
+        ? '...loading'
+        : isProductInCart
+        ? 'Remove from Cart'
+        : 'Add to Cart'}
     </button>
   );
 };
