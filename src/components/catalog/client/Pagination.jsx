@@ -51,7 +51,7 @@ export const Pagination = () => {
           })}
       </ul>
 
-      <div className="flex justify-center items-center mb-4">
+      <div className="flex justify-center items-center mb-10">
         <h1>Show products per page:</h1>
         <button
           className={`p-2 mx-2 ${

@@ -20,7 +20,7 @@ export const OffCanvasMenu = () => {
         onClick={() => {
           setOpen(!open);
         }}
-        className="relative z-10 hover:text-cyan-400"
+        className="relative z-10 hover:text-violet-400"
       >
         {open ? <CgClose size="32"></CgClose> : <CgMenu size="32"></CgMenu>}
       </button>
@@ -31,19 +31,19 @@ export const OffCanvasMenu = () => {
         } bg-neutral-900 transition-transform transform-gpu text-white w-dvw h-dvh fixed left-0 -top-full z-0 lg:w-1/3 center center`}
       >
         <ul className="flex flex-col justify-center items-center gap-y-5 h-screen text-2xl uppercase">
-          <li className=" hover:text-cyan-400">
+          <li className=" hover:text-violet-400">
             <Link href="/" title="Home">
               Home
             </Link>
           </li>
 
-          <li className=" hover:text-cyan-400">
+          <li className=" hover:text-violet-400">
             <Link href="/contact" title="Contact">
               Contact
             </Link>
           </li>
 
-          <li className=" hover:text-cyan-400">
+          <li className=" hover:text-violet-400">
             <Link href="/about-us" title="About us">
               About us
             </Link>

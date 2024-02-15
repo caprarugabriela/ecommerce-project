@@ -14,7 +14,7 @@ export const Header = () => {
   return (
     <div className="bg-neutral-900 text-white flex lg:flex-col justify-between items-center h-full p-4 ">
       {/* forced example */}
-      <Link href="/" className="relative z-10 hover:text-cyan-400">
+      <Link href="/" className="relative z-10 hover:text-violet-400">
         {jsxLogo}
       </Link>
 
@@ -22,7 +22,7 @@ export const Header = () => {
 
       <ul className="hidden lg:flex flex-col justify-between items-center gap-6 z-10">
         {socialLinks.map((social, index) => (
-          <li key={index} className="hover:text-cyan-400">
+          <li key={index} className="hover:text-violet-400">
             <a
               href={social.href}
               title={social.name}

@@ -25,7 +25,7 @@ export default function CartPage() {
             <button
               type="button"
               title="Proceed to Checkout"
-              className="bg-black text-white transition-colors hover:bg-cyan-400 uppercase text-center font-semibold w-full py-4 mb-10"
+              className="bg-black text-white transition-colors hover:bg-violet-400 uppercase text-center font-semibold w-full py-4 mb-10"
             >
               Proceed to Checkout
             </button>

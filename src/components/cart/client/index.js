@@ -6,3 +6,4 @@ export * from './CartTotals';
 export * from './CartLineItem';
 export * from './AddToCart';
 export * from './ContinueShopping';
+export * from './EmptyCart';

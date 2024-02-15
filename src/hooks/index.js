@@ -1,3 +1,3 @@
 export * from './useProducts';
-export * from './useCart';
+export * from './cart/useCart';
 export * from './useProduct';

@@ -41,7 +41,7 @@ export const ProductGrid = () => {
   if (error.trim().length > 0) {
     return (
       <div className="container mx-auto px-4 my-6">
-        <h1 className="text-cyan-400 font-light text-4xl lg:text-6xl mb-10">
+        <h1 className="text-violet-400 font-light text-4xl lg:text-6xl mb-10">
           Accept our appologies!
         </h1>
         <p className="lg:text-3xl font-light">

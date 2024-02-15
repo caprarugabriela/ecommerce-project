@@ -41,11 +41,14 @@ export const useAddToCart = () => {
       });
     }
 
+    const currentDate = new Date().toISOString().split('T')[0];
+
     // build payload
     const payload = {
       cartId,
       userId: 2,
       products: newProducts,
+      date: currentDate,
     };
 
     setLoading(true);

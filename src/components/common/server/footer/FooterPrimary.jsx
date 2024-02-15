@@ -14,10 +14,10 @@ export const FooterPrimary = () => {
             </h1>
             <li>
               <p>{address.address}</p>
-              <p className=" hover:text-cyan-400">
+              <p className=" hover:text-violet-400">
                 <Link href={`tel:${address.phone}`}>{address.phone}</Link>
               </p>
-              <p className=" hover:text-cyan-400">
+              <p className=" hover:text-violet-400">
                 <Link href={`mailto:${address.email}`}>{address.email}</Link>
               </p>
             </li>
@@ -35,7 +35,7 @@ export const FooterPrimary = () => {
                 title={socialMedia.title}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-cyan-400"
+                className="hover:text-violet-400"
               >
                 {socialMedia.label}
               </Link>

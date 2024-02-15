@@ -1,23 +1,28 @@
 import { ProductPrice } from '@/components/catalog/client';
 import { Spinner } from '@/components/ui/client';
 import { StarRating } from '@/components/ui/server';
+import { cartContext } from '@/contexts';
 import { useProduct } from '@/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { CgClose } from 'react-icons/cg';
+import { LiaTrashAlt } from 'react-icons/lia';
+import { baseUrl } from '@/index';
 
 export const CartLineItem = ({ product }) => {
   const { quantity: initialQuantity, productId } = product;
   const [quantity, setQuantity] = useState(initialQuantity);
   const { product: fullProduct, loading } = useProduct(productId);
   const productUrl = `/products/${productId}`;
+  const { cartProducts, setCartProducts, cartId } = useContext(cartContext);
 
-  // nu sunt sigura cum trebuie sa verific daca se face refresh-ul pe pagina de cart sau pe cea homepage..
   if (loading) {
     return (
       <tr>
-        <Spinner></Spinner>
+        <td>
+          <Spinner></Spinner>
+        </td>
       </tr>
     );
   }
@@ -43,12 +48,27 @@ export const CartLineItem = ({ product }) => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
+  const removeAllFromCart = () => {
+    fetch(`${baseUrl}/carts/${cartId}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((_) => {
+        const updatedCartProducts = cartProducts.filter(
+          (product) => product.productId !== productId,
+        );
+        setCartProducts(updatedCartProducts);
+      })
+      .catch((error) => {
+        console.error('Error removing all products from cart:', error);
+      });
+  };
+
   return (
     <>
-      {/* To be added functionality for this remove */}
       <tr className="border-b">
         <td>
-          <button className="remove-button">
+          <button className="remove-button" onClick={removeAllFromCart}>
             <CgClose size="22" />
           </button>
         </td>
@@ -67,8 +87,7 @@ export const CartLineItem = ({ product }) => {
         </td>
 
         <td>
-          <Link href="/products">
-            {' '}
+          <Link href={productUrl}>
             <h1 className="text-black font-medium">{title}</h1>
           </Link>
 
@@ -79,17 +98,22 @@ export const CartLineItem = ({ product }) => {
           <ProductPrice price={price}></ProductPrice>
         </td>
 
-        {/* mai ramane de vazut aici cum fac sa se actualizeze si pretul total dupa ce modific cantitatile */}
-
         <td style={{ height: '100px' }} className="text-center px-2">
           <div className="border border-black flex items-center justify-center gap-1 text-black">
-            <button
-              onClick={decreaseQuantity}
-              aria-label="Decrease quantity"
-              className="text-xl font-semibold hover:bg-gray-200 p-2"
-            >
-              -
-            </button>
+            {quantity === 1 ? (
+              <span className="cursor-pointer" onClick={removeAllFromCart}>
+                <LiaTrashAlt />
+              </span>
+            ) : (
+              <button
+                onClick={decreaseQuantity}
+                aria-label="Decrease quantity"
+                className="text-xl font-semibold hover:bg-gray-200 p-2"
+              >
+                -
+              </button>
+            )}
+
             <span className="px-4">{quantity}</span>
             <button
               onClick={increaseQuantity}
